@@ -1,0 +1,31 @@
+.product {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 20px;
+    margin-right: 40px;
+    border: 2px solid #282c34;
+    border-radius: 24px;
+}
+
+ul {
+    list-style: none;
+}
+
+ol {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: fit-content;
+    padding: 5px;
+    margin-bottom: 20px;
+    list-style: none;
+    background-color: #d4d4d4;
+}
+
+.subImg img{
+    width: 100px;
+    height: 100px;
+}

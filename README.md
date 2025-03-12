@@ -1,3 +1,6 @@
+# Homeworks 1
+з апі https://dummyjson.com/docs/products копійнути руцями та вивести всі елементи зі всіма полями.
+
 # Project location
 https://github.com/artt1c/react_lessons
 
