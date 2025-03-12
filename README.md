@@ -1,3 +1,6 @@
+# Lesson 1
+В цьому занняті ми будемо розглядати компоненти та пропси.
+
 # Project location
 https://github.com/artt1c/react_lessons
 
