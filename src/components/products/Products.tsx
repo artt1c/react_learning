@@ -1,11 +1,9 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {products} from "../../data";
 import Product from "../product/Product";
 
-const Products = () => {
-  for (const key in products[0]) {
-    console.log(key);
-  }
+const Products:FC = () => {
+
   return (
     <div>
       <p>Products</p>
