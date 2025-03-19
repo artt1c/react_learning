@@ -1,0 +1,119 @@
+.post {
+    padding: 10px;
+    background-color: #dcc7dc;
+    border: 2px solid;
+    border-radius: 16px;
+}
+
+.post__header {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.header-id {
+    position: absolute;
+    min-width: 10px;
+    padding: 0 5px;
+    background-color: #c2c2c2;
+    border-radius: 8px;
+    box-shadow: inset 1px 1px 1px #000;
+    text-align: center;
+}
+
+.header-title {
+    text-align: center;
+    font-weight: bold;
+}
+
+.post__main-body {
+    margin-bottom: 20px;
+}
+
+.main-body-body {
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    background-color: #8B99B6;
+    border-radius: 16px;
+}
+
+.main-body-tags {
+    width: fit-content;
+    padding: 4px 0 4px 5px;
+    margin-left: 2px;
+    background-color: #7a83aa;
+    border-radius: 16px;
+    font-size: 14px;
+}
+
+.main-body-tags span {
+    padding: 0 5px;
+    margin-right: 5px;
+    background-color: #c2c9dc;
+    border-radius: 8px;
+}
+
+.post__footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-reactions {
+    display: flex;
+    padding: 4px 8px;
+    background-color: #7a83aa;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.footer-reactions div {
+    position: relative;
+    padding-left: 20px;
+}
+
+.footer-reactions div:last-child {
+    margin-left: 8px;
+    border-left: 1px solid #323232;
+}
+
+.footer-reactions div::before {
+    position: absolute;
+    content: '';
+    left: 3px;
+    height: 100%;
+    width: 16px;
+}
+
+.footer-reactions div:first-child::before {
+    background-image: url('/like.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.footer-reactions div:last-child::before {
+    background-image: url('/dislike.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.footer-views {
+    position: relative;
+    padding: 4px 8px 4px 21px;
+    background-color: #7a83aa;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.footer-views::before {
+    position: absolute;
+    content: '';
+    top: 3px;
+    left: 3px;
+    height: 14px;
+    width: 18px;
+    background-image: url('https://www.svgrepo.com/show/458981/view.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}

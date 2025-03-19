@@ -1,0 +1,11 @@
+.posts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.posts-title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
