@@ -9,7 +9,7 @@ type ProductProps = {
 const Product:FC<ProductProps> = ({product}) => {
   return (
     <div>
-      <Link to={product.id.toString()}>{product.title}</Link>
+      <Link state={{data:product}} to={product.id.toString()}>{product.title}</Link>
     </div>
   );
 };
