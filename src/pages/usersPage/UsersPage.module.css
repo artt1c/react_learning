@@ -1,0 +1,11 @@
+.page {
+    display: flex;
+    width: 100%;
+    height: auto;
+}
+
+.users {
+    padding-left: 20px;
+    padding-right: 20px;
+    border-right: 1px solid;
+}
