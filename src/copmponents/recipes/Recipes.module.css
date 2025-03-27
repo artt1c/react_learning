@@ -1,5 +1,6 @@
 .recipesList {
     display: flex;
     gap: 20px;
+    min-height: 280px;
     margin: 40px 0;
 }

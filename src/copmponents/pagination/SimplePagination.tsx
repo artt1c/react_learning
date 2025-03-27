@@ -1,11 +1,7 @@
-import React, {FC} from 'react';
+import React from 'react';
 import {useSearchParams} from "react-router-dom";
 
-type IProps = {
-  flag: boolean;
-}
-
-const SimplePagination:FC<IProps> = ({flag}) => {
+const SimplePagination = () => {
 
   const [query, setQuery] = useSearchParams({page: '1'});
 
@@ -28,7 +24,7 @@ const SimplePagination:FC<IProps> = ({flag}) => {
   return (
     <div>
       <button onClick={onClickPrevHandler}>Prev</button>
-      <button onClick={onClickNextHandler} disabled={flag}>Next</button>
+      <button onClick={onClickNextHandler}>Next</button>
     </div>
   );
 };
