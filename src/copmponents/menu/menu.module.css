@@ -1,0 +1,27 @@
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    list-style: none;
+}
+
+.menuItem {
+    width: 100px;
+    height: 30px;
+    box-sizing: border-box;
+    padding-top: 3px;
+    background-color: #aeaeae;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.menuItem:hover {
+    box-shadow: inset 2px 2px 5px 0 rgba(0,0,0,0.75);
+    transform: scale(1.1);
+}
+
+.menuItem a {
+    color: #000000;
+    font-weight: 600;
+    text-decoration: none;
+}
