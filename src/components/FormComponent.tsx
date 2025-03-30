@@ -1,5 +1,7 @@
 import React from 'react';
 import {useForm} from "react-hook-form";
+import {joiResolver} from "@hookform/resolvers/joi";
+import {userValidator} from "../validators/user.validator";
 
 type FormProps = {
   username: string;
@@ -17,7 +19,7 @@ const FormComponent = () => {
       isValid,
 
     },
-  } = useForm<FormProps>({mode:'all'});
+  } = useForm<FormProps>({mode:'all', resolver:joiResolver(userValidator)});
 
 
   const customHandler = (dataFromForms: FormProps) => {
@@ -28,23 +30,15 @@ const FormComponent = () => {
   return (
     <form onSubmit={handleSubmit(customHandler)}>
       <label>
-        <input type="text" placeholder={'username'} {...register('username', {
-          required:{value: true, message: 'usernames is required'},
-        })}/>
+        <input type="text" placeholder={'username'} {...register('username')}/>
         {errors.username && <div>{errors.username.message}</div>}
       </label>
       <label>
-        <input type="text" placeholder={'password'} {...register('password', {
-          minLength: {value: 3, message: 'too short'},
-          maxLength: {value: 6, message: 'too long'},
-        })}/>
+        <input type="text" placeholder={'password'} {...register('password')}/>
         {errors.password && <div>{errors.password.message}</div>}
       </label>
       <label>
-        <input type="number" placeholder={'age'} {...register('age', {
-          min: {value:1, message:'min value is 1'},
-          max: {value:118, message:'max value is 180'}
-        })}/>
+        <input type="number" placeholder={'age'} {...register('age')}/>
         {errors.age && <div>{errors.age.message}</div>}
       </label>
       <button disabled={!isValid}>save</button>
