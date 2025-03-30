@@ -9,18 +9,45 @@ type FormProps = {
 
 const FormComponent = () => {
 
-  const {handleSubmit, register} = useForm<FormProps>();
+  const {
+    handleSubmit,
+    register,
+    formState: {
+      errors,
+      isValid,
+
+    },
+  } = useForm<FormProps>({mode:'all'});
 
 
   const customHandler = (dataFromForms: FormProps) => {
     console.log(dataFromForms);
+    console.log(errors);
+    console.log(isValid);
   };
   return (
     <form onSubmit={handleSubmit(customHandler)}>
-      <input type="text" placeholder={'username'} {...register('username')}/>
-      <input type="text" placeholder={'password'} {...register('password')}/>
-      <input type="number" placeholder={'age'} {...register('age')}/>
-      <button>save</button>
+      <label>
+        <input type="text" placeholder={'username'} {...register('username', {
+          required:{value: true, message: 'usernames is required'},
+        })}/>
+        {errors.username && <div>{errors.username.message}</div>}
+      </label>
+      <label>
+        <input type="text" placeholder={'password'} {...register('password', {
+          minLength: {value: 3, message: 'too short'},
+          maxLength: {value: 6, message: 'too long'},
+        })}/>
+        {errors.password && <div>{errors.password.message}</div>}
+      </label>
+      <label>
+        <input type="number" placeholder={'age'} {...register('age', {
+          min: {value:1, message:'min value is 1'},
+          max: {value:118, message:'max value is 180'}
+        })}/>
+        {errors.age && <div>{errors.age.message}</div>}
+      </label>
+      <button disabled={!isValid}>save</button>
     </form>
   );
 };
