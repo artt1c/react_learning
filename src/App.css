@@ -1,5 +1,14 @@
+body {
+  background-image: url('https://image-processor-storage.s3.us-west-2.amazonaws.com/uploads/829d18d9c68199c1dff505daa6b6d1df/illustrationjpg.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover ;
+}
+
 .App {
   text-align: center;
+  height: 100vh;
+
 }
 
 .App-logo {
