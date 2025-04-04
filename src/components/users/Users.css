@@ -1,0 +1,10 @@
+.users-list {
+    width: auto;
+    margin: 0 20px;
+    border: 2px solid;
+    border-radius: 24px;
+}
+
+.userSwiper {
+    padding: 20px;
+}
