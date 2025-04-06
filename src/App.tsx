@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import './App.css';
 import Menu from "./Menu";
 
@@ -10,9 +10,13 @@ function App() {
     console.log('App build');
   });
 
+  const someFn = useCallback(() => {
+    console.log('asdff');
+  },[])
+
   return (
     <div className="App">
-      <Menu/>
+      <Menu id={0} someFn={someFn} />
       <h2>{number}</h2>
 
       <button onClick={()=>{
