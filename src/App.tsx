@@ -1,14 +1,37 @@
-import React from 'react';
-import './App.css';
+import React, {Component} from 'react';
 
-function App() {
+type PropsType = {}
 
+type StateType = {
+  users:any[]
+  posts:any[]
+  comments:any[]
+}
 
-  return (
-    <div className="App">
+class App extends Component<PropsType, StateType> {
 
-    </div>
-  );
+  constructor(props:any) {
+    super(props);
+    this.state = {users: [], posts: [], comments: []}
+  }
+
+  componentDidMount() {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(res => res.json())
+      .then(users => {
+        this.setState({users: users});
+      })
+  }
+
+  render() {
+    return (
+      <div>
+        {
+          this.state.users.map(user => (<div>{user.name}</div>))
+        }
+      </div>
+    );
+  }
 }
 
 export default App;
