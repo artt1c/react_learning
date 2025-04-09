@@ -1,19 +1,19 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {getAllPosts} from "../servises/api.service";
-import {IPosts} from "../models/IPost";
 import Post from "../components/post/Post";
+import {useStore} from "../Store";
 
 const PostsPage = () => {
 
-  const [posts, setPosts] = useState<IPosts[]>([])
+  const {postSlice: {allPosts, loadPosts}} = useStore();
 
   useEffect(() => {
-    getAllPosts().then(posts => setPosts(posts));
+    getAllPosts().then(posts => loadPosts(posts));
   }, []);
 
   return (
     <ol>
-      {posts.map((post, i) => (<Post key={i} post={post} />))}
+      {allPosts.map((post, i) => (<Post key={i} post={post} />))}
     </ol>
   );
 };

@@ -1,19 +1,19 @@
-import React, {FC, useEffect, useState} from 'react';
-import {IPosts} from "../../models/IPost";
-import {getPostComments} from "../../servises/api.service";
+import React, {FC, useEffect} from 'react';
+import {IPost} from "../../models/IPost";
 import {IComment} from "../../models/IComment";
 import Comment from "../comment/Comment";
+import {useStore} from "../../Store";
 
 type IProps = {
-  post: IPosts;
+  post: IPost;
 }
 
 const Post:FC<IProps> = ({post}) => {
-
-  const [comments, setComments] = useState<IComment[]>([])
+  console.log('post render')
+  const {commentSlice: {singlePostComments, loadSinglePostComments}} = useStore();
 
   useEffect(() => {
-    getPostComments(post.id).then(comments =>setComments(comments));
+    loadSinglePostComments(post.id);
   }, [post.id]);
 
   return (
@@ -24,7 +24,7 @@ const Post:FC<IProps> = ({post}) => {
       <h4>Comments</h4>
       <ul>
         {
-          comments.map((comment: IComment) => (<Comment comment={comment} key={comment.id} />))
+          singlePostComments.map((comment: IComment) => (<Comment comment={comment} key={comment.id} />))
         }
       </ul>
     </li>

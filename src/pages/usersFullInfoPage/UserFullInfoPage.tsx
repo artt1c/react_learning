@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {useLocation} from "react-router-dom";
 import {IUser} from "../../models/IUser";
-import {getUserPosts} from "../../servises/api.service";
-import {IPosts} from "../../models/IPost";
 import Post from "../../components/post/Post";
 import styles from './UserFullPage.module.css'
+import {useStore} from "../../Store";
 
 const UserFullInfoPage = () => {
 
@@ -12,15 +11,14 @@ const UserFullInfoPage = () => {
 
   const [user, setUser] = useState<IUser | null>(null);
 
-  const [posts, setPosts] = useState<IPosts[]>([])
+  const {postSlice: {singleUserPosts, loadSingleUserPosts}} = useStore();
 
   useEffect(() => {
     if (data) {
       setUser(data);
-      getUserPosts(data.id).then(posts => setPosts(posts));
-
+      loadSingleUserPosts(data.id)
     }
-  }, [data])
+  }, [data,])
 
   return (
     <div className={styles.user}>
@@ -41,7 +39,7 @@ const UserFullInfoPage = () => {
       <hr/>
       <h3>USER POSTS</h3>
       <ul className={styles.postList}>
-        {posts.map(post => (<Post post={post} key={post.id}/>))}
+        {singleUserPosts.map(post => (<Post post={post} key={post.id}/>))}
       </ul>
     </div>
   );

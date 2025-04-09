@@ -1,19 +1,19 @@
-import React, {useEffect, useState} from 'react';
-import {getComments} from "../servises/api.service";
-import {IComment} from "../models/IComment";
+import React, {useEffect} from 'react';
+import {getAllComments} from "../servises/api.service";
 import Comment from "../components/comment/Comment";
+import {useStore} from "../Store";
 
 const CommentsPage = () => {
 
-  const [comments, setComments] = useState<IComment[]>([])
+  const {commentSlice: {allComments, loadComments}} = useStore();
 
   useEffect(() => {
-    getComments().then(posts => setComments(posts));
-  }, []);
+    getAllComments().then(posts => loadComments(posts));
+  });
 
   return (
     <ul>
-      {comments.map((comment, i) => (<Comment key={i} comment={comment} />))}
+      {allComments.map((comment, i) => (<Comment key={i} comment={comment} />))}
     </ul>
   );
 };

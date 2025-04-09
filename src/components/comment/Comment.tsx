@@ -8,7 +8,7 @@ type IProps = {
 const Comment:FC<IProps> = ({comment}) => {
   return (
     <li>
-      <h3>{comment.postId} - {comment.name} - {comment.id}</h3>
+      <h3>{comment.name} - {comment.id}</h3>
       <div>{comment.body}</div>
       <p>{comment.email}</p>
       <hr/>
