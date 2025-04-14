@@ -1,23 +1,26 @@
-import React, {useEffect, useState} from 'react';
-import {getAllUsers} from "../../servises/api.service";
+import React, {useEffect} from 'react';
 import {IUser} from "../../models/IUser";
 import User from "../../components/user/User";
 import {Outlet} from "react-router-dom";
 
 import styles from './UsersPage.module.css'
+import {useAppDispatch, useAppSelector} from "../../redux/store";
+import {userActions} from "../../redux/user.slice";
 
 const UsersPage = () => {
 
-  const [users, setUsers] = useState<IUser[]>([])
+
+  const userSelector = useAppSelector(state => state.userReducer);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    getAllUsers().then(users => setUsers(users));
-  }, []);
+    dispatch(userActions.loadUsers())
+  }, [dispatch]);
 
   return (
     <div className={styles.page}>
       <div className={styles.users}>
-        {users.map((user: IUser) => <User key={user.id} user={user}/>)}
+        {userSelector.users.map((user: IUser) => <User key={user.id} user={user}/>)}
       </div>
 
       <Outlet/>

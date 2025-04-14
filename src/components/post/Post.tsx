@@ -1,8 +1,8 @@
 import React, {FC, useEffect, useState} from 'react';
 import {IPosts} from "../../models/IPost";
-import {getPostComments} from "../../servises/api.service";
 import {IComment} from "../../models/IComment";
 import Comment from "../comment/Comment";
+import {useAppSelector} from "../../redux/store";
 
 type IProps = {
   post: IPosts;
@@ -10,11 +10,12 @@ type IProps = {
 
 const Post:FC<IProps> = ({post}) => {
 
-  const [comments, setComments] = useState<IComment[]>([])
+  const {comments} = useAppSelector(state => state.commentReducer);
+  const [postComment, setPostComment] = useState<IComment[]>([])
 
   useEffect(() => {
-    getPostComments(post.id).then(comments =>setComments(comments));
-  }, [post.id]);
+    setPostComment(comments.filter(comment => comment.postId === post.id))
+  }, [post.id, comments]);
 
   return (
     <li>
@@ -24,7 +25,7 @@ const Post:FC<IProps> = ({post}) => {
       <h4>Comments</h4>
       <ul>
         {
-          comments.map((comment: IComment) => (<Comment comment={comment} key={comment.id} />))
+          postComment.map((comment: IComment) => (<Comment comment={comment} key={comment.id} />))
         }
       </ul>
     </li>

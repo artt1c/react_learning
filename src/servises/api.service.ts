@@ -15,22 +15,12 @@ const getAllPosts = async ():Promise<IPosts[]> => {
   return (await axiosInstance.get<IPosts[]>('/posts')).data;
 }
 
-const getComments = async ():Promise<IComment[]> => {
+const getAllComments = async ():Promise<IComment[]> => {
   return (await axiosInstance.get<IComment[]>('/comments')).data;
-}
-
-const getUserPosts = async (id:number):Promise<IPosts[]> => {
-  return (await axiosInstance.get<IPosts[]>('/posts', {params:{userId: id}})).data;
-}
-
-const getPostComments = async (id:number):Promise<IComment[]> => {
-  return (await axiosInstance.get<IComment[]>('/comments', {params:{postId: id}})).data;
 }
 
 export {
   getAllUsers,
   getAllPosts,
-  getComments,
-  getUserPosts,
-  getPostComments,
+  getAllComments,
 };

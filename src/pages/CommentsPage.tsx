@@ -1,19 +1,20 @@
-import React, {useEffect, useState} from 'react';
-import {getComments} from "../servises/api.service";
-import {IComment} from "../models/IComment";
+import React, {useEffect} from 'react';
 import Comment from "../components/comment/Comment";
+import {useAppDispatch, useAppSelector} from "../redux/store";
+import {commentActions} from "../redux/comment.slice";
 
 const CommentsPage = () => {
 
-  const [comments, setComments] = useState<IComment[]>([])
+  const commentSelector = useAppSelector(state => state.commentReducer);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    getComments().then(posts => setComments(posts));
-  }, []);
+    dispatch(commentActions.loadComments())
+  }, [dispatch]);
 
   return (
     <ul>
-      {comments.map((comment, i) => (<Comment key={i} comment={comment} />))}
+      {commentSelector.comments.map((comment, i) => (<Comment key={i} comment={comment} />))}
     </ul>
   );
 };
